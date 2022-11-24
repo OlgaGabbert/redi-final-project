@@ -5,5 +5,7 @@ async function fetchRandomJoke() {
         },
     });
     let joke = await response.json();
-    console.log(joke.joke);
+    let randomJoke = document.getElementById('joke-container');
+    randomJoke.textContent = joke.joke;
   }
+
