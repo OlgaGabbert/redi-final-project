@@ -47,7 +47,31 @@ function renderSavedJokes() {
 
 }
 
+async function fetchDictionary(link) {
+    let response = await fetch(link);
+    let result = await response.json();
+    let myMeaning = document.getElementById("myMeaning");
+    myMeaning.innerHTML = '';
+    for (let i = 0; i < result.length; i++) {
+        let resultDiv = document.createElement("div");
+        for (let j = 0; j < result[i].meanings.length; j++) {
+            let meaningDiv = document.createElement('div');
+            resultDiv.appendChild(meaningDiv);
+            meaningDiv.textContent = result[i].meanings[j].partOfSpeech;
+            for (let k = 0; k < result[i].meanings[j].definitions.length; k++) {
+                let definitionDiv = document.createElement('div');
+                meaningDiv.appendChild(definitionDiv);
+                definitionDiv.textContent = result[i].meanings[j].definitions[k].definition;
+            }
+        }
+        myMeaning.appendChild(resultDiv);
+    }
+}
 
 
-
+function searchWord() {
+    let word = document.getElementById('word').value;
+    let link = "https://api.dictionaryapi.dev/api/v2/entries/en/" + encodeURIComponent(word);
+    fetchDictionary(link);
+}
 
