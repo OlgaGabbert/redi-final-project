@@ -1,39 +1,43 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-  <title>Random Dad joke</title>
-  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>Random Dad joke</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
-  <h1>Random Dad Joke</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="add-joke.html">Add a New Joke</a>
-  </nav>
-  <h2>Get Jokes</h2>
-  <div class="request-buttons">
-    <div>
-      <button id="fetch-random" onclick='fetchRandomJoke()'>Fetch a Random Joke</button>
+    <h1>Random Dad Joke</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="add-joke.html">Add a New Joke</a>
+    </nav>
+    <h2>Get Jokes</h2>
+    <div class="request-buttons">
+        <div>
+            <button id="fetch-random" onclick='fetchRandomJoke()'>Fetch a Random Joke</button>
+        </div>
     </div>
-  </div>
-  <div id="joke-container">
-    
-  </div>
+    <div id="joke-container">
 
-  <div id='saved-container'>
+    </div>
 
-  </div>
+    <div id='saved-container'>
+
+    </div>
 
     <div id='search-word'>
         <h2>Search a word you don't know</h2>
-    <input type="text" id="word"/>
-        <input type="submit" onclick="searchWord()"/>
+        <input type="text" placeholder='Search..' name='search' id="word" />
+        <button type="submit" onclick="searchWord()"><i class="fa fa-search"></i></button>
         <div id='myMeaning'></div>
     </div>
 
-  <script src="main.js"></script>
+    <script src="main.js"></script>
 </body>
+
 </html>

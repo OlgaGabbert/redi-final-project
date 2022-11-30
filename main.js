@@ -29,8 +29,9 @@ async function fetchRandomJoke() {
 }
 
 function renderSavedJokes() {
+    randomJoke.innerHTML = '';
     savedJoke.innerHTML = '';
-    for (let i = 0; i<myJokes.length; i++) {
+    for (let i = 0; i < myJokes.length; i++) {
         let savedDiv = document.createElement('div');
         savedJoke.appendChild(savedDiv);
         savedDiv.textContent = myJokes[i];
@@ -38,8 +39,8 @@ function renderSavedJokes() {
         savedDiv.appendChild(deleteButton);
         deleteButton.textContent = 'delete';
 
-        deleteButton.onclick = function() {
-            myJokes.splice(i,1);
+        deleteButton.onclick = function () {
+            myJokes.splice(i, 1);
             localStorage.setItem('myJokes', JSON.stringify(myJokes));
             renderSavedJokes();
         }
