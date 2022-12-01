@@ -1,5 +1,12 @@
 let randomJoke = document.getElementById('joke-container');
 let savedJoke = document.getElementById('saved-container');
+let myMeaning = document.getElementById("myMeaning");
+
+let savedMeaning = document.getElementById('saved-meaning');
+
+
+let myWords = [];
+let myMeanings = [];
 
 let myJokes = JSON.parse(localStorage.getItem("myJokes"));
 if (myJokes === null) {
@@ -7,6 +14,7 @@ if (myJokes === null) {
 }
 
 renderSavedJokes();
+renderSavedWordsAndMeanings();
 
 async function fetchRandomJoke() {
     let response = await fetch("https://icanhazdadjoke.com", {
@@ -35,6 +43,7 @@ function renderSavedJokes() {
         let savedDiv = document.createElement('div');
         savedJoke.appendChild(savedDiv);
         savedDiv.textContent = myJokes[i];
+
         let deleteButton = document.createElement('button');
         savedDiv.appendChild(deleteButton);
         deleteButton.textContent = 'delete';
@@ -51,7 +60,6 @@ function renderSavedJokes() {
 async function fetchDictionary(link) {
     let response = await fetch(link);
     let result = await response.json();
-    let myMeaning = document.getElementById("myMeaning");
     myMeaning.innerHTML = '';
     for (let i = 0; i < result.length; i++) {
         let resultDiv = document.createElement("div");
@@ -67,6 +75,18 @@ async function fetchDictionary(link) {
         }
         myMeaning.appendChild(resultDiv);
     }
+    let saveWord = document.createElement('button');
+        myMeaning.appendChild(saveWord);
+        saveWord.textContent = 'Save';
+
+    saveWord.onclick = function () {
+            let myWord = document.getElementById('word').value;
+            myWords.push(myWord);
+            // myMeanings.push(myMeaning);
+            localStorage.setItem("myWords", JSON.stringify(myWords));
+            // localStorage.setItem('myMeanings', JSON.stringify(myMeanings));
+            renderSavedWordsAndMeanings();
+        }
 }
 
 
@@ -76,3 +96,23 @@ function searchWord() {
     fetchDictionary(link);
 }
 
+
+function renderSavedWordsAndMeanings() {
+    myMeaning.innerHTML = '';
+    savedMeaning.innerHTML = '';
+    for (let i = 0; i < myWords.length; i++) {
+        console.log(myWords);
+        let savedWordDiv = document.createElement('div');
+        savedMeaning.appendChild(savedWordDiv);
+        savedWordDiv.textContent = myWords[i];
+
+        let deleteButtonWord = document.createElement('button');
+        savedWordDiv.appendChild(deleteButtonWord);
+        deleteButtonWord.textContent = 'delete';
+        // for (let j =0; j < myMeanings.length; j++) {
+        //     let savedMeaningDiv = document.createElement('div');
+        //     savedMeaning.appendChild(savedMeaningDiv);
+        //     savedMeaning.textContent = myMeanings[j];
+        // }
+    }
+}
