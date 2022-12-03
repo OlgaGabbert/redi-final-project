@@ -5,8 +5,15 @@ let myMeaning = document.getElementById("myMeaning");
 let savedMeaning = document.getElementById('saved-meaning');
 
 
-let myWords = [];
-let myMeanings = [];
+let myWords = JSON.parse(localStorage.getItem('myWords'));
+if (myWords === null) {
+    myWords = [];
+}
+
+// let myMeanings = JSON.parse(localStorage.getItem('myMeanings'));
+// if(myMeanings === null) {
+//     myMeanings = [];
+// }
 
 let myJokes = JSON.parse(localStorage.getItem("myJokes"));
 if (myJokes === null) {
@@ -75,17 +82,18 @@ async function fetchDictionary(link) {
         }
         myMeaning.appendChild(resultDiv);
     }
-    let saveWord = document.createElement('button');
-        myMeaning.appendChild(saveWord);
-        saveWord.textContent = 'Save';
+    let saveWordAndMeaning = document.createElement('button');
+        myMeaning.appendChild(saveWordAndMeaning);
+        saveWordAndMeaning.textContent = 'Save';
 
-    saveWord.onclick = function () {
-            let myWord = document.getElementById('word').value;
-            myWords.push(myWord);
-            // myMeanings.push(myMeaning);
-            localStorage.setItem("myWords", JSON.stringify(myWords));
-            // localStorage.setItem('myMeanings', JSON.stringify(myMeanings));
-            renderSavedWordsAndMeanings();
+    saveWordAndMeaning.onclick = function () {
+        let myWord = document.getElementById('word').value;
+        myWords.push(myWord);
+        // console.log(myMeaning.textContent);
+        // myMeanings.push(myMeaning.textContent);
+        localStorage.setItem("myWords", JSON.stringify(myWords));
+        // localStorage.setItem('myMeanings', JSON.stringify(myMeanings));
+        renderSavedWordsAndMeanings();
         }
 }
 
@@ -101,7 +109,6 @@ function renderSavedWordsAndMeanings() {
     myMeaning.innerHTML = '';
     savedMeaning.innerHTML = '';
     for (let i = 0; i < myWords.length; i++) {
-        console.log(myWords);
         let savedWordDiv = document.createElement('div');
         savedMeaning.appendChild(savedWordDiv);
         savedWordDiv.textContent = myWords[i];
@@ -109,10 +116,11 @@ function renderSavedWordsAndMeanings() {
         let deleteButtonWord = document.createElement('button');
         savedWordDiv.appendChild(deleteButtonWord);
         deleteButtonWord.textContent = 'delete';
+
         // for (let j =0; j < myMeanings.length; j++) {
         //     let savedMeaningDiv = document.createElement('div');
         //     savedMeaning.appendChild(savedMeaningDiv);
-        //     savedMeaning.textContent = myMeanings[j];
+        //     savedMeaningDiv.textContent = myMeanings[j];
         // }
     }
 }
