@@ -81,6 +81,7 @@ async function fetchDictionary(link) {
             }
         }
         myMeaning.appendChild(resultDiv);
+
     }
     let saveWordAndMeaning = document.createElement('button');
         myMeaning.appendChild(saveWordAndMeaning);
@@ -88,9 +89,9 @@ async function fetchDictionary(link) {
 
     saveWordAndMeaning.onclick = function () {
         let myWord = document.getElementById('word').value;
+        // let mySavedMeaning = myMeaning.textContent;
         myWords.push(myWord);
-        // console.log(myMeaning.textContent);
-        // myMeanings.push(myMeaning.textContent);
+        // myMeanings.push(mySavedMeaning.textContent);
         localStorage.setItem("myWords", JSON.stringify(myWords));
         // localStorage.setItem('myMeanings', JSON.stringify(myMeanings));
         renderSavedWordsAndMeanings();
@@ -117,10 +118,29 @@ function renderSavedWordsAndMeanings() {
         savedWordDiv.appendChild(deleteButtonWord);
         deleteButtonWord.textContent = 'delete';
 
-        // for (let j =0; j < myMeanings.length; j++) {
-        //     let savedMeaningDiv = document.createElement('div');
-        //     savedMeaning.appendChild(savedMeaningDiv);
-        //     savedMeaningDiv.textContent = myMeanings[j];
-        // }
+        deleteButtonWord.onclick = function () {
+            myWords.splice(i, 1);
+            localStorage.setItem('myWords', JSON.stringify(myWords));
+            renderSavedWordsAndMeanings();
+        }
     }
+
+    // for (let j = 0; j < myMeanings.length; j++) {
+    //     let savedMeaningDiv = document.createElement('div');
+    //     savedMeaning.appendChild(savedMeaningDiv);
+    //     savedMeaningDiv.textContent = myMeanings[j];
+    // }
 }
+
+window.onscroll = function() {myFunction()};
+
+let navbar = document.getElementById("navbar");
+let sticky = navbar.offsetTop;
+
+function myFunction() {
+    if (window.pageYOffset >= sticky) {
+      navbar.classList.add("sticky")
+    } else {
+      navbar.classList.remove("sticky");
+    }
+  } 
