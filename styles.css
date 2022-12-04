@@ -1,57 +1,11 @@
-/* body {
-    background-color: #2e4a99;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: 'Nunito Sans', sans-serif;
-  }
-  
-  h1 {
-    text-align: center;
-    font-weight: bold;
-  }
-  
-  nav {
-    width: 80%;
-    max-width: 400px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  a {
-    color: #fff;
-  }
-  
-  nav a {
-    margin: 10px;
-  }
-  
-  .inputs {
-    display: flex;
-    flex-direction: column;
-    margin: 5px;
-  }
-  
-  input {
-    font-size: 16px;
-    padding: 10px;
-  }
-  
-  #joke-container {
-    padding: 10px;
-    width: 60%;  
-  }
-  
-  .single-joke {
-    padding: 10px;
-  }
-  
-  .joke-text {
-    font-style: italic;
-  } */
-  
-  button {
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&display=swap');
+ 
+body {
+  font-family: 'IBM Plex Mono', monospace;
+  margin: 0;
+}
+
+button {
     margin: 5px;
     cursor: pointer;
     border: 2px solid #fff;
@@ -64,22 +18,4 @@
   button:hover {
     background-color: #5798fa;
     transition: background-color 0.2s;
-  }
-
-  .sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-  }
-
-  #content {
-    padding: 16px;
-  }
-
-  .sticky + .content {
-    padding-top: 60px;
-  }
-
-  /* #navbar {
-    overflow: hidden;
   }
