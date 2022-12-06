@@ -13,9 +13,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body style='background-color: #2e4a99; color: #fff'>
-    <div class='container-fluid' style='margin-top:20px;'>
-        <nav class="navbar navbar-expand-lg fixed-top bg-light" id='navbar' >
+<body>
+    <div>
+        <nav class="navbar navbar-expand-lg fixed-top bg-light" id='navbar'>
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.html">Random Dad Joke</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -40,49 +40,57 @@
                 </div>
             </div>
         </nav>
-
-        <div id="header" style='margin-top:70px;'>
-            <h2>Let's learn new words with some Dad Jokes!</h2>
-        </div>
+        <section style='margin-top:70px;'>
+            <article id="header">
+                <h2>Let's learn new words with some Dad Jokes!</h2>
+            </article>
+        </section>
 
         <div id='content' style='margin-top:20px;'>
+            <section id='jokes'>
+                <article>
+                    <div class="getRandomJokes">
+                        <h2>Get Jokes</h2>
+                        <div id="getJoke">
+                            <button id="fetch-random" onclick='fetchRandomJoke()'>Fetch a Random Joke</button>
+                        </div>
+                    </div>
 
-            <div class="getRandomJokes">
-                <h2>Get Jokes</h2>
-                <div id="getJoke">
-                    <button id="fetch-random" onclick='fetchRandomJoke()'>Fetch a Random Joke</button>
-                </div>
-            </div>
+                    <div class='randomJoke'>
+                        <div id="joke-container">
+                        </div>
+                    </div>
 
-            <div class='randomJoke'>
-                <div id="joke-container">
-                </div>
-            </div>
+                    <div class='saved-jokes'>
+                        <h3>Saved jokes</h3>
+                        <div id='saved-container'>
+                        </div>
+                    </div>
+                </article>
+            </section>
 
-            <div class='saved-jokes'>
-                <h3>Saved jokes</h3>
-                <div id='saved-container'>
-                </div>
-            </div>
+            <section id='dictionary'>
+                <article>
+                    <div class='searchForWord'>
+                        <div id='search-word'>
+                            <h2>Search a word you don't know</h2>
+                            <input type="text" placeholder='Search..' name='search' id="word" />
+                            <button type="submit" onclick="searchWord()"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
 
-            <div class='searchForWord'>
-                <div id='search-word'>
-                    <h2>Search a word you don't know</h2>
-                    <input type="text" placeholder='Search..' name='search' id="word" />
-                    <button type="submit" onclick="searchWord()"><i class="fa fa-search"></i></button>
-                </div>
-            </div>
+                    <div class='meaningsOfWords'>
+                        <div id='myMeaning'>
+                        </div>
+                    </div>
 
-            <div class='meaningsOfWords'>
-                <div id='myMeaning'>
-                </div>
-            </div>
-
-            <div class='savedMeanings'>
-                <div id='saved-meaning'>
-                    <h3>Saved words and their meanings</h3>
-                </div>
-            </div>
+                    <div class='savedMeanings'>
+                        <div id='saved-meaning'>
+                            <h3>Saved words and their meanings</h3>
+                        </div>
+                    </div>
+                </article>
+            </section>
         </div>
 
         <div class='footer'>

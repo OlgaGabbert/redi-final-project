@@ -46,7 +46,7 @@ function renderSavedJokes() {
 
         let deleteButton = document.createElement('button');
         savedDiv.appendChild(deleteButton);
-        deleteButton.textContent = 'delete';
+        deleteButton.textContent = 'Delete';
 
         deleteButton.onclick = function () {
             myJokes.splice(i, 1);
@@ -133,7 +133,7 @@ function renderSavedWordsAndMeanings() {
 
         let deleteButton = document.createElement('button');
         savedDefinitionDiv.appendChild(deleteButton);
-        deleteButton.textContent = 'delete';
+        deleteButton.textContent = 'Delete';
 
         deleteButton.onclick = function () {
             myDefinitions.splice(i, 1);

@@ -19,3 +19,40 @@ button {
     background-color: #5798fa;
     transition: background-color 0.2s;
   }
+
+  section {
+    min-height: 100vh;
+  }
+  
+  section#header {
+    background: rgb(123,134,232);
+    background: linear-gradient(164deg, rgba(123,134,232,1) 0%, rgba(246,140,255,1) 52%, rgba(255,222,50,1) 100%);
+    color: #270942;
+    height: 100vh;
+  }
+  
+  section#jokes {
+    background: rgb(123,211,232);
+    background: linear-gradient(135deg, rgba(123,211,232,1) 0%, rgba(123,211,232,1) 0%, rgba(50,171,255,1) 100%);
+    color: #0f2852;
+  }
+  
+  section#dictionary {
+    background: rgb(123,211,232);
+    background: linear-gradient(135deg, rgba(123,211,232,1) 0%, rgba(232,123,165,1) 0%, rgba(255,50,50,1) 100%);
+    color: #40081a;
+  }
+  
+  article {
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    margin: 0px auto;
+  }
+  
+  h2 {
+    text-align: center;
+    padding: 40px 0px 0px 0px;
+    font-size: 3em;
+  }
+  
