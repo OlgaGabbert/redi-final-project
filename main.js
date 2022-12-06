@@ -1,19 +1,12 @@
 let randomJoke = document.getElementById('joke-container');
 let savedJoke = document.getElementById('saved-container');
 let myMeaning = document.getElementById("myMeaning");
-
 let savedMeaning = document.getElementById('saved-meaning');
 
-
-let myWords = JSON.parse(localStorage.getItem('myWords'));
-if (myWords === null) {
-    myWords = [];
+let myDefinitions = JSON.parse(localStorage.getItem('myDefinitions'));
+if (myDefinitions === null) {
+    myDefinitions = [];
 }
-
-// let myMeanings = JSON.parse(localStorage.getItem('myMeanings'));
-// if(myMeanings === null) {
-//     myMeanings = [];
-// }
 
 let myJokes = JSON.parse(localStorage.getItem("myJokes"));
 if (myJokes === null) {
@@ -65,6 +58,7 @@ function renderSavedJokes() {
 }
 
 async function fetchDictionary(link) {
+    let myWord = document.getElementById('word').value;
     let response = await fetch(link);
     let result = await response.json();
     myMeaning.innerHTML = '';
@@ -77,27 +71,40 @@ async function fetchDictionary(link) {
             for (let k = 0; k < result[i].meanings[j].definitions.length; k++) {
                 let definitionDiv = document.createElement('div');
                 meaningDiv.appendChild(definitionDiv);
-                definitionDiv.textContent = result[i].meanings[j].definitions[k].definition;
+                let definition = result[i].meanings[j].definitions[k].definition;
+                definitionDiv.textContent = definition;
+                let saveWordAndMeaning = document.createElement('button');
+                definitionDiv.appendChild(saveWordAndMeaning);
+                saveWordAndMeaning.textContent = 'Save';
+
+                saveWordAndMeaning.onclick = function () {
+                    let storedDefinition = findDefinition(myWord);
+                    if (storedDefinition === undefined) {
+                        storedDefinition = {
+                            word: myWord,
+                            definitions: [definition]
+                        }
+                        myDefinitions.push(storedDefinition);
+                    } else {
+                        storedDefinition.definitions.push(definition);
+                    }
+                    localStorage.setItem('myDefinitions', JSON.stringify(myDefinitions));
+                    renderSavedWordsAndMeanings();
+                }
             }
         }
         myMeaning.appendChild(resultDiv);
-
     }
-    let saveWordAndMeaning = document.createElement('button');
-        myMeaning.appendChild(saveWordAndMeaning);
-        saveWordAndMeaning.textContent = 'Save';
 
-    saveWordAndMeaning.onclick = function () {
-        let myWord = document.getElementById('word').value;
-        // let mySavedMeaning = myMeaning.textContent;
-        myWords.push(myWord);
-        // myMeanings.push(mySavedMeaning.textContent);
-        localStorage.setItem("myWords", JSON.stringify(myWords));
-        // localStorage.setItem('myMeanings', JSON.stringify(myMeanings));
-        renderSavedWordsAndMeanings();
-        }
 }
 
+function findDefinition(word) {
+    for (let i = 0; i < myDefinitions.length; i++) {
+        if (myDefinitions[i].word === word) {
+            return myDefinitions[i];
+        }
+    }
+}
 
 function searchWord() {
     let word = document.getElementById('word').value;
@@ -109,25 +116,25 @@ function searchWord() {
 function renderSavedWordsAndMeanings() {
     myMeaning.innerHTML = '';
     savedMeaning.innerHTML = '';
-    for (let i = 0; i < myWords.length; i++) {
-        let savedWordDiv = document.createElement('div');
-        savedMeaning.appendChild(savedWordDiv);
-        savedWordDiv.textContent = myWords[i];
+    for (let i = 0; i < myDefinitions.length; i++) {
+        let savedDefinitionDiv = document.createElement('div');
+        savedMeaning.appendChild(savedDefinitionDiv);
+        savedDefinitionDiv.textContent = myDefinitions[i].word;
+        for (let j = 0; j < myDefinitions[i].definitions.length; j++) {
+            let savedDiv = document.createElement('div');
+            savedMeaning.appendChild(savedDiv);
+            savedDiv.textContent = myDefinitions[i].definitions[j];
+        }
 
-        let deleteButtonWord = document.createElement('button');
-        savedWordDiv.appendChild(deleteButtonWord);
-        deleteButtonWord.textContent = 'delete';
+        let deleteButton = document.createElement('button');
+        savedDefinitionDiv.appendChild(deleteButton);
+        deleteButton.textContent = 'delete';
 
-        deleteButtonWord.onclick = function () {
-            myWords.splice(i, 1);
-            localStorage.setItem('myWords', JSON.stringify(myWords));
+        deleteButton.onclick = function () {
+            myDefinitions.splice(i, 1);
+            localStorage.setItem('myDefinitions', JSON.stringify(myDefinitions));
             renderSavedWordsAndMeanings();
         }
     }
 
-    // for (let j = 0; j < myMeanings.length; j++) {
-    //     let savedMeaningDiv = document.createElement('div');
-    //     savedMeaning.appendChild(savedMeaningDiv);
-    //     savedMeaningDiv.textContent = myMeanings[j];
-    // }
 }
