@@ -9,7 +9,7 @@ button {
     margin: 5px;
     cursor: pointer;
     border: 2px solid #fff;
-    background-color: #2e4a99;
+    background-color: #4681f4;
     color: #fff;
     padding: 10px;
     font-size: 16px;
@@ -32,13 +32,13 @@ button {
   
 
   #jokes {
-    background: rgb(123,211,232);
+    background: rgb(90, 183, 206);
     background: linear-gradient(135deg, rgba(123,211,232,1) 0%, rgba(123,211,232,1) 0%, rgba(50,171,255,1) 100%);
     color: #0f2852;
   }
   
   #dictionary {
-    background: rgb(123,211,232);
+    background: rgb(190,88,204);
     background: linear-gradient(135deg, rgba(123,211,232,1) 0%, rgba(232,123,165,1) 0%, rgba(255,50,50,1) 100%);
     color: #40081a;
   }
