@@ -45,11 +45,11 @@ function renderSavedJokes() {
         savedJoke.appendChild(savedJokeHeader);
         savedJokeHeader.textContent = 'Saved Jokes';
         savedJokeHeader.classList.add('cardHeader');
+        savedJoke.classList.add('savedJokeCard');
     }
     for (let i = 0; i < myJokes.length; i++) {
         let savedDiv = document.createElement('div');
         savedJoke.appendChild(savedDiv);
-        savedJoke.classList.add('savedJokeCard');
         savedDiv.textContent = myJokes[i];
 
         let deleteButton = document.createElement('button');
