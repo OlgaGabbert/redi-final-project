@@ -25,10 +25,10 @@ async function fetchRandomJoke() {
     let joke = await response.json();
     let myRandomJoke = joke.joke;
     randomJoke.textContent = myRandomJoke;
+    randomJoke.classList.add('randomJokeCard');
     let saveButton = document.createElement('button');
     randomJoke.appendChild(saveButton);
     saveButton.textContent = 'Save';
-
     saveButton.onclick = function () {
         myJokes.push(myRandomJoke);
         localStorage.setItem("myJokes", JSON.stringify(myJokes));
@@ -38,7 +38,13 @@ async function fetchRandomJoke() {
 
 function renderSavedJokes() {
     randomJoke.innerHTML = '';
+    randomJoke.classList.remove('randomJokeCard');
     savedJoke.innerHTML = '';
+    if(myJokes.length > 0) {
+        let savedJokeHeader = document.createElement('h3');
+        savedJoke.appendChild(savedJokeHeader);
+        savedJokeHeader.textContent = 'Saved Jokes';
+    }
     for (let i = 0; i < myJokes.length; i++) {
         let savedDiv = document.createElement('div');
         savedJoke.appendChild(savedDiv);
@@ -71,13 +77,17 @@ async function fetchDictionary(link) {
             let resultDiv = document.createElement("div");
             for (let j = 0; j < result[i].meanings.length; j++) {
                 let meaningDiv = document.createElement('div');
+                let partOfSpeech = document.createElement('p');
                 resultDiv.appendChild(meaningDiv);
-                meaningDiv.textContent = result[i].meanings[j].partOfSpeech;
+                meaningDiv.appendChild(partOfSpeech);  
+                partOfSpeech.textContent = result[i].meanings[j].partOfSpeech;
+                partOfSpeech.style.fontWeight = 'bold';
                 for (let k = 0; k < result[i].meanings[j].definitions.length; k++) {
                     let definitionDiv = document.createElement('div');
                     meaningDiv.appendChild(definitionDiv);
                     let definition = result[i].meanings[j].definitions[k].definition;
                     definitionDiv.textContent = definition;
+
                     let saveWordAndMeaning = document.createElement('button');
                     definitionDiv.appendChild(saveWordAndMeaning);
                     saveWordAndMeaning.textContent = 'Save';
