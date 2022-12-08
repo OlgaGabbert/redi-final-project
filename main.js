@@ -44,10 +44,12 @@ function renderSavedJokes() {
         let savedJokeHeader = document.createElement('h3');
         savedJoke.appendChild(savedJokeHeader);
         savedJokeHeader.textContent = 'Saved Jokes';
+        savedJokeHeader.classList.add('cardHeader');
     }
     for (let i = 0; i < myJokes.length; i++) {
         let savedDiv = document.createElement('div');
         savedJoke.appendChild(savedDiv);
+        savedJoke.classList.add('savedJokeCard');
         savedDiv.textContent = myJokes[i];
 
         let deleteButton = document.createElement('button');
