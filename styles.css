@@ -24,20 +24,20 @@ button {
     min-height: 100vh;
   }
   
-  section#header {
+  #header {  
     background: rgb(123,134,232);
     background: linear-gradient(164deg, rgba(123,134,232,1) 0%, rgba(246,140,255,1) 52%, rgba(255,222,50,1) 100%);
     color: #270942;
-    height: 100vh;
   }
   
-  section#jokes {
+
+  #jokes {
     background: rgb(123,211,232);
     background: linear-gradient(135deg, rgba(123,211,232,1) 0%, rgba(123,211,232,1) 0%, rgba(50,171,255,1) 100%);
     color: #0f2852;
   }
   
-  section#dictionary {
+  #dictionary {
     background: rgb(123,211,232);
     background: linear-gradient(135deg, rgba(123,211,232,1) 0%, rgba(232,123,165,1) 0%, rgba(255,50,50,1) 100%);
     color: #40081a;
@@ -55,4 +55,36 @@ button {
     padding: 40px 0px 0px 0px;
     font-size: 3em;
   }
+
+  #navbar {
+    background-color: #1e1e1e;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    box-sizing: border-box;
+    height: 45px;
+  }
   
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0px 10px;
+  }
+
+  #navbar.sticky {
+    position: fixed;
+    top: 0;
+  }
+
+  .navbarOffsetMargin {
+    padding-top: 45px;
+  }
+
+  article {
+    display: block;
+    margin: auto;
+    width: 600px;
+    text-align: center;
+  }
