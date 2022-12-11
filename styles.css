@@ -103,7 +103,7 @@ button {
     background-color: white;
     padding: 10px;
     margin-top: 20px;
-    border-radius: 20px;
+    border-radius: 10px;
     margin-bottom: 20px;
   }
 
@@ -116,5 +116,58 @@ button {
   }
 
   .cardHeader {
-    background-color: rgb(224,224,224)
+    background-color: #4681f4;
+    color: white;
   }
+
+  .definitionCard, .savedDefinitionCard {
+    background-color: white;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  .definitionHeader {
+    background-color: #673147;
+    color: white;
+  }
+
+  .searchButton {
+    background-color: #673147;
+    color: white;
+    margin-left: 5px;
+  }
+
+  .searchButton:hover {
+    background-color: #301934;
+    transition: background-color 0.2s;
+  }
+
+  .saveWordButton {
+    background-color: #673147;
+    color: white;
+  }
+
+  .saveWordButton:hover {
+    background-color: #301934;
+    transition: background-color 0.2s;
+  }
+
+  .deleteWordButton {
+    background-color: #673147;
+    color: white;
+    margin-left: 8px;
+  }
+
+  .deleteWordButton:hover {
+    background-color: #301934;
+    transition: background-color 0.2s;
+  }
+
+  .savedWordHeader {
+    background-color: #673147;
+    color: white;
+  }
+
+  
