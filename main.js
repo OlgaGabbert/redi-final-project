@@ -40,6 +40,7 @@ function renderSavedJokes() {
     randomJoke.innerHTML = '';
     savedJoke.innerHTML = '';
     savedJoke.classList.remove('savedJokeCard');
+    randomJoke.classList.remove('randomJokeCard');
     if (myJokes.length > 0) {
         let savedJokeHeader = document.createElement('h3');
         savedJoke.appendChild(savedJokeHeader);
